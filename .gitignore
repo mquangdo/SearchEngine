@@ -15,3 +15,5 @@ wheels/
 
 #Ignored folders
 qdrant/qdrant_data
+qdrant/embeddings
+
