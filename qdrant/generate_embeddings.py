@@ -8,7 +8,7 @@ from sentence_transformers import SentenceTransformer
 CSV_PATH = "data/crawl.csv"
 OUTPUT_DIR = "qdrant/embeddings"
 
-MODEL_NAME = "BAAI/bge-m3"
+MODEL_NAME = "AITeamVN/Vietnamese_Embedding"
 BATCH_SIZE = 64
 
 def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
