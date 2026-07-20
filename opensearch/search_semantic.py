@@ -3,18 +3,21 @@ from sentence_transformers import SentenceTransformer
 from opensearch_client import client
 
 model = SentenceTransformer(
-    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    "AITeamVN/Vietnamese_Embedding"
 )
 
-query = "Chức năng của quốc hội là gì?"
+query = "Việc xác định đất vườn, ao gắn liền với đất ở theo điểm c khoản 2 Điều 10 Nghị quyết số 254/2025/QH15"
 
 query_embedding = model.encode(
     query,
     normalize_embeddings=True
 ).tolist()
 
+
+print('=' * 80)
+
 response = client.search(
-    index="laws_vector",
+    index="crawled_data_vector",
     body={
         "size": 1,
         "query": {
@@ -28,9 +31,8 @@ response = client.search(
     }
 )
 
-print("=" * 80)
-
 print("Query:", query)
+print("=" * 80)
 
 for hit in response["hits"]["hits"]:
     print(f"Score: {hit['_score']:.4f}")

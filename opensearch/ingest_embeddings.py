@@ -99,13 +99,21 @@ def main():
         desc="Indexing"
     ):
 
-        ok, _ = bulk(
+        ok, errors = bulk(
             client,
             batch,
             raise_on_error=False,
         )
 
         success += ok
+
+        print(f"Success: {ok}")
+        print(f"Errors : {len(errors)}")
+
+        if errors:
+            from pprint import pprint
+            pprint(errors[0])
+            break
 
     print(f"\nIndexed {success} documents.")
 
